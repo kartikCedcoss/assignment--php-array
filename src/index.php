@@ -139,22 +139,87 @@ foreach($products as $key => $value )
                                                  echo  "Product name:-". $item['name']."<br>";
                                                  echo  "Product brand:-". $item['brand']."<br>";
                                                  echo "product Subcategory:-".$arr."<br>";
-                                                 echo "product Category :-".$key;
+                                                 echo "product Category :-".$key."<br><br>";
 
                                              }
                                                 
-                                                    
-                                                
-                                                
-                                                    
-                                
-                                                }
-                                            }}
                                             }
                                         }
+                                      }
+                                }
+                        }
                                         
-                                        echo "</table><br>";
+                                        
+ $newProducts = $products;
+ 
+ echo "BEFORE DELETE:-<br>";
+ foreach($newProducts as $cat => $valc){
+    foreach($valc as $sub => $vals){
+        foreach($vals as $item => $vali){
+            
+            if($vali['id'] == 'PR003'){
+                
+                       print_r ($vals);
+                }            
+            
+            
+        }
+    }
+}
+echo "</table><br><br>";
+
+echo "After DELETE:-<br>";
+ foreach($newProducts as $cat => $valc){
+     foreach($valc as $sub => $vals){
+         foreach($vals as $item => $vali){
+             if($vali['id'] == 'PR003'){
+             array_splice($vals,2);
+                    print_r ($vals);
+                    echo "<br><br><br>";
+             }
+
+         }
+     }
+ }
+
+ echo "BEFORE UPDATE:-<br>";
+ echo '<table><tr><th>Category</th><th>SubCategory</th><th>Id</th><th>Name</th><th>Brand</th></tr>';
+ 
+ 
+ foreach($newProducts as $cat => $valc){
+      
+     foreach($valc as $sub => $vals){
+       
+         foreach($vals as $item => $vali){
+             
+              echo '<tr><td>'.$cat .'</td><td>'.$sub.'</td><td>'.$vali['id'].'</td><td>'.$vali['name'].'</td><td>'.$vali['brand'].'</td></tr>';
+         }
+     }
+ }
+ echo '</table>';
 
 
 
-?>
+
+ 
+  echo "AFTER UPDATE:-<br>";
+ echo '<table><tr><th>Category</th><th>SubCategory</th><th>Id</th><th>Name</th><th>Brand</th></tr>';
+ 
+ 
+ foreach($newProducts as $cat => $valc){
+      
+     foreach($valc as $sub => $vals){
+       
+         foreach($vals as $item => $vali){
+             if($vali['id'] == "PR002") {
+             
+              $vali['name'] = "BIG-555";
+              }
+              echo '<tr><td>'.$cat .'</td><td>'.$sub.'</td><td>'.$vali['id'].'</td><td>'.$vali['name'].'</td><td>'.$vali['brand'].'</td></tr>';
+         }
+     }
+ }
+ echo '</table>';
+ ?>
+
+
